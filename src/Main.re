@@ -14,5 +14,5 @@ Js.log(Vector.neg(v1));
 Js.log(b1);
 Js.log(Box.turn(b1));
 
-Js.log(Letter.fLetter);
+Js.log(Letter.f);
 
