@@ -17,6 +17,6 @@ let splitHorizontally : (float, box) => (box, box);
 
 let a : box => vector;
 
-let c : box => vector;
+let b : box => vector;
 
 let c : box => vector;
