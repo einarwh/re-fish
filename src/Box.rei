@@ -14,3 +14,9 @@ let toss: box => box;
 let splitVertically : (float, box) => (box, box);
 
 let splitHorizontally : (float, box) => (box, box);
+
+let a : box => vector;
+
+let c : box => vector;
+
+let c : box => vector;

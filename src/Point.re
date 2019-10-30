@@ -15,4 +15,3 @@ let displace : (point, Vector.vector) => point =
 let x : point => float = p => p.x;
 
 let y : point => float = p => p.y;
-

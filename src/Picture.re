@@ -1,8 +1,6 @@
 open Compose;
 open Box;
 
-type thing = int;
-
 type rendering = list(thing)
 
 type picture = Box.box => rendering; 

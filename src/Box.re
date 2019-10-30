@@ -67,3 +67,12 @@ let splitHorizontally : (float, box) => (box, box) =
         let right = box |> moveHorizontally(f) |> scaleHorizontally(g);
         (left, right);
     }
+
+let a : box => vector = 
+    box => box.a;
+
+let b : box => vector = 
+    box => box.b;
+
+let c : box => vector = 
+    box => box.c;
