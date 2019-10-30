@@ -24,7 +24,7 @@ let scale = (f : float, v : vector) : vector =>
 let length = (v : vector) : float =>
     hypot(v.x, v.y)
 
-let xdim : vector => float = v => v.x;
+let dx : vector => float = v => v.x;
 
-let ydim : vector => float = v => v.y;
+let dy : vector => float = v => v.y;
 

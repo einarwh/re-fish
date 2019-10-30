@@ -12,6 +12,6 @@ let scale: (float, vector) => vector;
 
 let length: vector => float;
 
-let xdim: vector => float;
+let dx: vector => float;
 
-let ydim: vector => float; 
+let dy: vector => float; 
