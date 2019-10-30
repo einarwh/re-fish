@@ -1,9 +1,10 @@
 open Compose;
-open Box;
 
 type rendering = list(Shape.shape)
 
 type picture = Box.box => rendering; 
+
+let blank : picture = _ => [];
 
 let turn : picture => picture = 
     p => Box.turn >> p
@@ -18,7 +19,7 @@ let aboveRatio : (int, int, picture, picture) => picture =
     (m, n, p1, p2) =>
         box => {
             let f = float(m) /. (float(m) +. float(n))
-            let (top, bot) = splitVertically(f, box);
+            let (top, bot) = Box.splitVertically(f, box);
             List.append(p1(top), p2(bot));
         }
 
@@ -29,7 +30,7 @@ let besideRatio : (int, int, picture, picture) => picture =
     (m, n, p1, p2) =>
         box => {
             let f = float(m) /. (float(m) +. float(n))
-            let (left, right) = splitHorizontally(f, box);
+            let (left, right) = Box.splitHorizontally(f, box);
             List.append(p1(left), p2(right));
         }
 
