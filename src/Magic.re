@@ -65,14 +65,3 @@ let createPicture : list(Shape.shape) => Picture.picture =
             let mapper = createMapper(box);
             List.map(mapShape(mapper), shapes)
         };
-
-/**
-
-createPicture : List Shape -> Picture
-createPicture shapes box = 
-  let 
-    m = mapper box
-    style = getStyle box
-  in 
-    shapes |> List.map (mapShape m) |> List.map (\s -> (s, style))
-*/

@@ -15,7 +15,7 @@ let fShape : shape = {
           create(0.70, 0.70),
           create(0.70, 0.80),
           create(0.30, 0.80) ];
-    PolygonShape(Polygon.create(pts));
+    PolygonShape(Polygon.create(pts))
 };
 
 let f : list(shape) = [ fShape ];
@@ -36,7 +36,7 @@ let hShape : shape = {
           create(0.40, 0.55),
           create(0.40, 0.80),
           create(0.30, 0.80) ];
-    PolygonShape(Polygon.create(pts));
+    PolygonShape(Polygon.create(pts))
 };
 
 let h : list(shape) = [ hShape ];
@@ -57,7 +57,7 @@ let eShape : shape = {
           create(0.70, 0.70),
           create(0.70, 0.80),
           create(0.30, 0.80) ];
-    PolygonShape(Polygon.create(pts));
+    PolygonShape(Polygon.create(pts))
 };
 
 let e : list(shape) = [ eShape ];
@@ -76,7 +76,111 @@ let nShape : shape = {
           create(0.60, 0.40),
           create(0.40, 0.80),
           create(0.30, 0.80) ];
-    PolygonShape(Polygon.create(pts));
+    PolygonShape(Polygon.create(pts))
 };
 
 let n : list(shape) = [ nShape ];
+
+/*** D ***/
+
+dShape2 : Shape 
+dShape2 = 
+  let 
+    pts = [ pt01, pt02, pt03, pt04, pt05, pt06 ]
+  in
+    Polygon { points = pts }
+
+let dShape1 : shape = {
+    let pts = 
+        [ create(0.30, 0.20), 
+          create(0.55, 0.20),
+          create(0.70, 0.35),
+          create(0.70, 0.65),
+          create(0.55, 0.80),
+          create(0.30, 0.80) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let dShape2 : shape = {
+    let pts = 
+        [ create(0.40, 0.30), 
+          create(0.52, 0.30),
+          create(0.60, 0.38),
+          create(0.60, 0.62),
+          create(0.52, 0.70),
+          create(0.40, 0.70) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let d : list(shape) = [ dShape1, dShape2 ];
+
+/*** R ***/
+
+let rShape1 : shape = {
+    let pts = 
+        [ create(0.30, 0.20), 
+          create(0.40, 0.20),
+          create(0.40, 0.45),
+          create(0.45, 0.45),
+          create(0.60, 0.20),
+          create(0.70, 0.20),
+          create(0.55, 0.45),
+          create(0.70, 0.45),
+          create(0.70, 0.80),
+          create(0.30, 0.80) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let rShape2 : shape = {
+    let pts = 
+        [ create(0.40, 0.55), 
+          create(0.60, 0.55),
+          create(0.60, 0.70),
+          create(0.40, 0.70) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let r : list(shape) = [ rShape1, rShape2 ];
+
+/*** S ***/
+
+let sShape : shape = {
+    let pts = 
+        [ create(0.30, 0.20), 
+          create(0.70, 0.20),
+          create(0.70, 0.55),
+          create(0.40, 0.55),
+          create(0.40, 0.70),
+          create(0.70, 0.70),
+          create(0.70, 0.80),
+          create(0.30, 0.80),
+          create(0.30, 0.45),
+          create(0.60, 0.45),
+          create(0.60, 0.30), 
+          create(0.30, 0.30) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let s : list(shape) = [ sShape ];
+
+/*** O ***/
+
+let oShape1 : shape = {
+    let pts = 
+        [ create(0.30, 0.20), 
+          create(0.70, 0.20),
+          create(0.70, 0.80),
+          create(0.30, 0.80) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let oShape2 : shape = {
+    let pts = 
+        [ create(0.40, 0.30), 
+          create(0.60, 0.30),
+          create(0.60, 0.70),
+          create(0.40, 0.70) ];
+    PolygonShape(Polygon.create(pts))
+};
+
+let o : list(shape) = [ oShape1, oShape2 ];
