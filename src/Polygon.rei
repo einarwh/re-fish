@@ -1,5 +1,5 @@
-open Vector;
+open Point;
 
 type polygon;
-let create : list(vector) => polygon;
-let points : polygon => list(vector);
+let create : list(point) => polygon;
+let points : polygon => list(point);

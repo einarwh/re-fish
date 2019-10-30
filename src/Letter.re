@@ -1,7 +1,5 @@
-open Vector;
+open Point;
 open Shape;
-
-let c = Line.create;
 
 let fShape : shape = {
     let pts = 

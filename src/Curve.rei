@@ -1,8 +1,8 @@
-open Vector;
+open Point;
 
 type curve;
-let create : (vector, vector, vector, vector) => curve;
-let point1 : curve => vector;
-let point2 : curve => vector;
-let point3 : curve => vector;
-let point4 : curve => vector;
+let create : (point, point, point, point) => curve;
+let point1 : curve => point;
+let point2 : curve => point;
+let point3 : curve => point;
+let point4 : curve => point;

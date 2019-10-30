@@ -1,10 +1,10 @@
-open Vector;
+open Point;
 
-type polyline = list(vector);
+type polyline = list(point);
 
-let create : list(vector) => polyline =
+let create : list(point) => polyline =
     (points) => points;
 
-let points : polyline => list(vector) =
+let points : polyline => list(point) =
     (polyline) => polyline;
     

@@ -11,3 +11,7 @@ let neg: vector => vector;
 let scale: (float, vector) => vector;
 
 let length: vector => float;
+
+let xdim: vector => float;
+
+let ydim: vector => float; 

@@ -1,12 +1,12 @@
-open Vector;
+open Point;
 
-type line = { start: vector, stop: vector }
+type line = { start: point, stop: point }
 
-let create : (vector, vector) => line =
+let create : (point, point) => line =
     (start, stop) => { start: start, stop: stop };
 
-let start : line => vector =
+let start : line => point =
     (line) => line.start;
 
-let stop : line => vector = 
+let stop : line => point = 
     (line) => line.stop;

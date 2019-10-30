@@ -1,20 +1,20 @@
-open Vector;
+open Point;
 
 type bezier = { 
-    controlPoint1 : vector, 
-    controlPoint2 : vector,
-    endPoint : vector
+    controlPoint1 : point, 
+    controlPoint2 : point,
+    endPoint : point
 };
 
-let create : (vector, vector, vector) => bezier =
+let create : (point, point, point) => bezier =
     (cp1, cp2, ep) => {
         controlPoint1: cp1,
         controlPoint2: cp2, 
         endPoint: ep
     };
 
-let controlPoint1 : bezier => vector = bz => bz.controlPoint1;
+let controlPoint1 : bezier => point = bz => bz.controlPoint1;
 
-let controlPoint2 : bezier => vector = bz => bz.controlPoint2;
+let controlPoint2 : bezier => point = bz => bz.controlPoint2;
 
-let endPoint : bezier => vector = bz => bz.endPoint;
+let endPoint : bezier => point = bz => bz.endPoint;

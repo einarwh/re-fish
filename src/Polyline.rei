@@ -1,5 +1,5 @@
-open Vector;
+open Point;
 
 type polyline;
-let create : list(vector) => polyline;
-let points : polyline => list(vector);
+let create : list(point) => polyline;
+let points : polyline => list(point);

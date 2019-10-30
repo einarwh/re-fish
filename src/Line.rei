@@ -1,6 +1,6 @@
-open Vector;
+open Point;
 
 type line;
-let create : (vector, vector) => line;
-let start : line => vector;
-let stop : line => vector;
+let create : (point, point) => line;
+let start : line => point;
+let stop : line => point;

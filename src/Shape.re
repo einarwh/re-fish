@@ -1,8 +1,8 @@
-open Vector;
+open Point;
 
 type shape = 
     | LineShape(Line.line) 
     | PolygonShape(Polygon.polygon)
     | PolylineShape(Polyline.polyline)
     | CurveShape(Curve.curve)
-    | PathShape(vector, list(Bezier.bezier))
+    | PathShape(point, list(Bezier.bezier))
