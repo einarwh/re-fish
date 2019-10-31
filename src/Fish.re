@@ -48,9 +48,3 @@ let fish : list(Shape.shape) = {
           curve((0.112, 0.845), (0.150, 0.805), (0.172, 0.780), (0.187, 0.752)) ];  
     curves |> List.map(c => Shape.CurveShape(c))
 };
-
-/* let fish : list(Shape.shape) = {
-    let curves : list(Curve.curve) = 
-        [ curve((0.116, 0.702), (0.260, 0.295), (0.330, 0.258), (0.815, 0.078)) ]; 
-    curves |> List.map(c => Shape.CurveShape(c))
-}; */

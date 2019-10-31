@@ -17,7 +17,8 @@ let make = (~size: string) => {
     let fishp = Magic.createPicture(Fish.fish);
     let p = Picture.squareLimit(3, fishp);
     let rendered = fp(box);
-    let elements = List.map(Svg.toElement, rendered);
+    let mirrored = Mirror.mirror(250., rendered);
+    let elements = List.map(Svg.toElement, mirrored);
     let lines = Array.of_list(Svg.lines(elements));
     let polygons = Array.of_list(Svg.polygons(elements));
     let polylines = Array.of_list(Svg.polylines(elements));

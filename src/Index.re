@@ -28,6 +28,6 @@ let makeContainer = text => {
 };
 
 ReactDOMRe.render(
-  <SvgComp size="300px" />,
+  <SvgComp size="250px" />,
   makeContainer("Functional Geometry"),
 );
