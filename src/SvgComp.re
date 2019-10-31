@@ -1,3 +1,5 @@
+open Compose;
+
 type lineAttrs = {
     x1: string,
     y1: string,
@@ -11,12 +13,22 @@ let make = (~size: string) => {
     let style = ReactDOMRe.Style.make(~width=size, ~height=size,());
     let box = Box.create(Vector.create(25., 25.), Vector.create(200., 0.), Vector.create(0., 200.));
     let fp = Magic.createPicture(Letter.f);
+    let hp = Magic.createPicture(Letter.h);
+    let ep = Magic.createPicture(Letter.e);
+    let np = Magic.createPicture(Letter.n);
+    let dp = Magic.createPicture(Letter.d);
+    let rp = Magic.createPicture(Letter.r);
+    let sp = Magic.createPicture(Letter.s);
+    let op = Magic.createPicture(Letter.o);
+    let name = 
+      mm => Picture.nonet(hp, ep, np, dp, mm, rp, sp, op, np);
     let gp = Magic.createPicture(Figure.george);
     let qp = Picture.quartet(gp, gp |> Picture.flip |> Picture.turn |> Picture.turn, gp |> Picture.turn |> Picture.turn, gp |> Picture.flip);
     let qp' = qp |> Picture.turn |> Picture.turn;
     let fishp = Magic.createPicture(Fish.fish);
-    let p = Picture.squareLimit(3, fishp);
-    let rendered = fp(box);
+    /* let p = Picture.squareLimit(3, fishp); */
+    let p = ep |> times(3, name);
+    let rendered = p(box);
     let mirrored = Mirror.mirror(250., rendered);
     let elements = List.map(Svg.toElement, mirrored);
     let lines = Array.of_list(Svg.lines(elements));
