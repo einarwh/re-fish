@@ -8,29 +8,26 @@ type lineAttributes = {
 
 type polygonAttributes = {
     points: string,
-    stroke: string
+    stroke: string,
+    strokeWidth: string
 };
 
 type polylineAttributes = {
     points: string,
-    stroke: string
-};
-
-type curveAttributes = {
-    foo: string,
-    stroke: string
+    stroke: string,
+    strokeWidth: string
 };
 
 type pathAttributes = {
     d: string,
-    stroke: string
+    stroke: string,
+    strokeWidth: string
 };
 
 type element = 
     | LineElement(lineAttributes) 
     | PolygonElement(polygonAttributes)
     | PolylineElement(polylineAttributes)
-    | CurveElement(curveAttributes)
     | PathElement(pathAttributes)
 
 let toPointString : Point.point => string = 
@@ -45,6 +42,18 @@ let toPointsString : list(Point.point) => string =
         let strs = List.map(toPointString, points);
         String.concat(" ", strs)
     };
+
+let toColorString : Style.color => string = 
+    color => {
+        switch (color) {
+        | Black => "black"
+        | Grey => "grey"
+        | White => "white"
+        }
+    };
+
+let toStrokeWidthString : float => string = 
+    width => Printf.sprintf("%.2f", width);
 
 let toDString : Point.point => Point.point => Point.point => Point.point => string = 
     (sp, cp1, cp2, ep) => {
@@ -61,8 +70,11 @@ let toDString : Point.point => Point.point => Point.point => Point.point => stri
         "M" ++ sps ++ " C " ++ cp1s ++ ", " ++ cp2s ++ ", " ++ eps
     };
 
-let toElement : Shape.shape => element =
-    shape => {
+let toElement : StyledShape.styledShape => element =
+    styledShape => {
+        let (shape, style) = styledShape;
+        let strokeWidth = toStrokeWidthString(style.strokeWidth);
+        let strokeColor = toColorString(style.strokeColor);
         switch shape {
         | Shape.LineShape(line) => {
             LineElement({
@@ -70,7 +82,7 @@ let toElement : Shape.shape => element =
                 y1: "0",
                 x2: "0",
                 y2: "0",
-                stroke: "black"
+                stroke: "pink"
             })
         } 
         | Shape.PolygonShape(polygon) => {
@@ -78,7 +90,8 @@ let toElement : Shape.shape => element =
             let pointsStr = toPointsString(points);
             PolygonElement({
                 points: pointsStr,
-                stroke: "black"
+                stroke: strokeColor,
+                strokeWidth: strokeWidth
             })
         }
         | Shape.PolylineShape(polyline) => {
@@ -86,7 +99,8 @@ let toElement : Shape.shape => element =
             let pointsStr = toPointsString(points);
             PolylineElement({
                 points: pointsStr,
-                stroke: "black"
+                stroke: strokeColor,
+                strokeWidth: strokeWidth
             })
         }
         | Shape.CurveShape(curve) => {
@@ -97,14 +111,16 @@ let toElement : Shape.shape => element =
             let d = toDString(sp, cp1, cp2, ep);
             PathElement({
                 d: d,
-                stroke: "black"
+                stroke: strokeColor,
+                strokeWidth: strokeWidth
             })
         } 
         | Shape.PathShape(start, beziers) => {
             let d = "M 0,0"
             PathElement({
                 d: d,
-                stroke: "black"
+                stroke: strokeColor,
+                strokeWidth: strokeWidth
             })
         } 
         }

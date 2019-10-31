@@ -6,8 +6,8 @@ let createMapper : float => Point.point => Point.point =
         Point.create(px, py');
     };
 
-let mirror : float => list(Shape.shape) => list(Shape.shape) =
+let mirror : float => list(StyledShape.styledShape) => list(StyledShape.styledShape) =
     (height, shapes) => {
         let mapper = createMapper(height);
-        List.map(Shape.transpose(mapper), shapes)
+        List.map(StyledShape.transpose(mapper), shapes)
     };

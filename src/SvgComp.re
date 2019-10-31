@@ -1,17 +1,24 @@
 open Compose;
 
-type lineAttrs = {
-    x1: string,
-    y1: string,
-    x2: string,
-    y2: string,
-    stroke: string
+let createMirror : float => Point.point => Point.point = 
+  (height, pt) => {
+      let px = Point.x(pt);
+      let py = Point.y(pt);
+      let py' = height -. py;
+      Point.create(px, py');
   };
+
+/* let mirror : float => list(Shape.shape) => list(Shape.shape) =
+  (height, shapes) => {
+      let mapper = createMapper(height);
+      List.map(Shape.transpose(mapper), shapes)
+  }; */
   
 [@react.component]
 let make = (~size: string) => {
     let style = ReactDOMRe.Style.make(~width=size, ~height=size,());
     let box = Box.create(Vector.create(25., 25.), Vector.create(200., 0.), Vector.create(0., 200.));
+    let box' = Box.create(Vector.create(0., 0.), Vector.create(250., 0.), Vector.create(0., 250.));
     let fp = Magic.createPicture(Letter.f);
     let hp = Magic.createPicture(Letter.h);
     let ep = Magic.createPicture(Letter.e);
@@ -26,10 +33,11 @@ let make = (~size: string) => {
     let qp = Picture.quartet(gp, gp |> Picture.flip |> Picture.turn |> Picture.turn, gp |> Picture.turn |> Picture.turn, gp |> Picture.flip);
     let qp' = qp |> Picture.turn |> Picture.turn;
     let fishp = Magic.createPicture(Fish.fish);
-    /* let p = Picture.squareLimit(3, fishp); */
-    let p = ep |> times(3, name);
-    let rendered = p(box);
+    let p = Picture.squareLimit(3, fishp);
+    /* let p = ep |> times(3, name); */
+    let rendered = p(box');
     let mirrored = Mirror.mirror(250., rendered);
+    /* let mirrored = rendered |> List.map((shape, style) => (Shape.transpose(mirror, shape), style); */
     let elements = List.map(Svg.toElement, mirrored);
     let lines = Array.of_list(Svg.lines(elements));
     let polygons = Array.of_list(Svg.polygons(elements));
@@ -39,8 +47,8 @@ let make = (~size: string) => {
       style
       xmlns="http://www.w3.org/2000/svg">
       {lines->Belt.Array.map(le => <line x1=le.x1 y1=le.y1 x2=le.x2 y2=le.y2 stroke=le.stroke />)->React.array}
-      {polygons->Belt.Array.map(el => <polygon points=el.points stroke=el.stroke fill="None" />)->React.array}
-      {polylines->Belt.Array.map(el => <polyline points=el.points stroke=el.stroke fill="None" />)->React.array}
-      {paths->Belt.Array.map(el => <path d=el.d stroke=el.stroke fill="None" />)->React.array}
+      {polygons->Belt.Array.map(el => <polygon points=el.points stroke=el.stroke strokeWidth=el.strokeWidth fill="None" />)->React.array}
+      {polylines->Belt.Array.map(el => <polyline points=el.points stroke=el.stroke strokeWidth=el.strokeWidth fill="None" />)->React.array}
+      {paths->Belt.Array.map(el => <path d=el.d stroke=el.stroke strokeWidth=el.strokeWidth fill="None" />)->React.array}
     </svg>;
   };

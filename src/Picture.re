@@ -1,6 +1,8 @@
 open Compose;
 
-type rendering = list(Shape.shape)
+type styledShape = (Shape.shape, Style.style);
+
+type rendering = list(StyledShape.styledShape);
 
 type picture = Box.box => rendering; 
 
