@@ -1,4 +1,3 @@
-
 open Vector;
 
 type box;
