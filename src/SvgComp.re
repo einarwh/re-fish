@@ -23,7 +23,6 @@ let make = (~size: string) => {
     /* let p = ep |> times(3, name); */
     let rendered = p(box');
     let mirrored = Mirror.mirror(250., rendered);
-    /* let mirrored = rendered |> List.map((shape, style) => (Shape.transpose(mirror, shape), style); */
     let elements = List.map(Svg.toElement, mirrored);
     let lines = Array.of_list(Svg.lines(elements));
     let polygons = Array.of_list(Svg.polygons(elements));
