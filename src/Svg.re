@@ -46,6 +46,21 @@ let toPointsString : list(Point.point) => string =
         String.concat(" ", strs)
     };
 
+let toDString : Point.point => Point.point => Point.point => Point.point => string = 
+    (sp, cp1, cp2, ep) => {
+        let toStr : Point.point => string = 
+            pt => {
+                let x = Point.x(pt);
+                let y = Point.y(pt);
+                Printf.sprintf("%.2f %.2f", x, y)        
+            };
+        let sps = toStr(sp);
+        let cp1s = toStr(cp1);
+        let cp2s = toStr(cp2);
+        let eps = toStr(ep);
+        "M" ++ sps ++ " C " ++ cp1s ++ ", " ++ cp2s ++ ", " ++ eps
+    };
+
 let toElement : Shape.shape => element =
     shape => {
         switch shape {
@@ -75,9 +90,13 @@ let toElement : Shape.shape => element =
             })
         }
         | Shape.CurveShape(curve) => {
-            let flop = "";
-            CurveElement({
-                foo: flop,
+            let sp = Curve.point1(curve);
+            let cp1 = Curve.point2(curve);
+            let cp2 = Curve.point3(curve);
+            let ep = Curve.point4(curve);
+            let d = toDString(sp, cp1, cp2, ep);
+            PathElement({
+                d: d,
                 stroke: "black"
             })
         } 
@@ -115,6 +134,14 @@ let selectPolylineAttributes : element => option(polylineAttributes) =
         }
     };
 
+let selectPathAttributes : element => option(pathAttributes) = 
+    el => {
+        switch (el) {
+        | PathElement(attrs) => Some(attrs)
+        | _ => None
+        }
+    };
+
 let choose : ('a => option('b)) => list('a) => list('b) = 
     (chooser, values) => {
         let mapped = List.map(chooser, values);
@@ -134,3 +161,7 @@ let polygons : list(element) => list(polygonAttributes) =
 let polylines : list(element) => list(polylineAttributes) = 
     elements => 
         choose(selectPolylineAttributes, elements); 
+
+let paths : list(element) => list(pathAttributes) = 
+    elements => 
+        choose(selectPathAttributes, elements); 
