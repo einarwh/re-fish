@@ -83,13 +83,6 @@ let n : list(shape) = [ nShape ];
 
 /*** D ***/
 
-dShape2 : Shape 
-dShape2 = 
-  let 
-    pts = [ pt01, pt02, pt03, pt04, pt05, pt06 ]
-  in
-    Polygon { points = pts }
-
 let dShape1 : shape = {
     let pts = 
         [ create(0.30, 0.20), 

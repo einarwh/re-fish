@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
+    "start": "bsb -make-world -w -ws _ ",
     "clean": "bsb -clean-world"
   },
   "keywords": [
-    "BuckleScript"
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
   ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "reason-react": ">=0.7.0"
+  },
   "devDependencies": {
-    "bs-platform": "^5.0.6"
+    "bs-platform": "^5.2.1",
+    "bsb-js": "^1.1.7"
   }
 }

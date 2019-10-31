@@ -1,5 +1,8 @@
 {
   "name": "re-fish",
+  "reason": {
+    "react-jsx": 3
+  },
   "version": "0.1.0",
   "sources": {
     "dir" : "src",
@@ -10,8 +13,9 @@
     "in-source": true
   },
   "suffix": ".bs.js",
+  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
   "bs-dependencies": [
-
+    "reason-react"
   ],
   "warnings": {
     "error" : "+101"
