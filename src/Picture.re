@@ -43,19 +43,27 @@ let quartet : (picture, picture, picture, picture) => picture =
     (nw, ne, sw, se) =>
         above(beside(nw, ne), beside(sw, se));
 
-let row : list(picture) => picture = 
-    ps => box => [];
+let rec row : list(picture) => picture = 
+    ps => {
+        switch ps {
+        | [] => blank
+        | [p] => p
+        | [p, ...tail] => besideRatio(1, List.length(tail), p, row(tail))
+        }
+    }
 
-let col : list(picture) => picture = 
-    ps => box => [];
+let rec col : list(picture) => picture = 
+    ps => {
+        switch ps {
+        | [] => blank
+        | [p] => p
+        | [p, ...tail] => aboveRatio(1, List.length(tail), p, col(tail))
+        }
+    }
 
 let nonet : (picture, picture, picture, picture, picture, picture, picture, picture, picture) => picture = 
     (nw, nm, ne, mw, mm, me, sw, sm, se) => {
-        let row : (picture, picture, picture) => picture = 
-            (w, m, e) => besideRatio(1, 2, w, beside(m, e));
-        let col : (picture, picture, picture) => picture = 
-            (n, m, s) => aboveRatio(1, 2, n, above(m, s));
-        col(row(nw, nm, ne), row(mw, mm, me), row(sw, sm, se))
+        col([row([nw, nm, ne]), row([mw, mm, me]), row([sw, sm, se])])
     };
 
 let over : (picture, picture) => picture = 
