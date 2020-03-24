@@ -5,20 +5,23 @@
   },
   "version": "0.1.0",
   "sources": {
-    "dir" : "src",
-    "subdirs" : true
+    "dir": "src",
+    "subdirs": true
   },
   "package-specs": {
     "module": "commonjs",
     "in-source": true
   },
   "suffix": ".bs.js",
-  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
+  "bsc-flags": [
+    "-bs-super-errors",
+    "-bs-no-version-header"
+  ],
   "bs-dependencies": [
     "reason-react"
   ],
   "warnings": {
-    "error" : "+101"
+    "error": "+101"
   },
   "namespace": true,
   "refmt": 3

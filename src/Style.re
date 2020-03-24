@@ -1,9 +1,9 @@
-type color = 
+type color =
   | Black
   | Grey
-  | White
+  | White;
 
 type style = {
-    strokeWidth: float,
-    strokeColor: color
+  strokeWidth: float,
+  strokeColor: color,
 };

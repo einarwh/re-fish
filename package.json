@@ -4,7 +4,8 @@
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w -ws _ ",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "server": "parcel index.html"
   },
   "keywords": [
     "BuckleScript",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "bs-platform": "^5.2.1",
-    "bsb-js": "^1.1.7"
+    "bsb-js": "^1.1.7",
+    "parcel-bundler": "^1.12.4"
   }
 }

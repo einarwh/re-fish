@@ -9,7 +9,7 @@ npm run build
 
 # Run 
 ```
-parcel index.html
+npm run server
 ```
 
 # Editor

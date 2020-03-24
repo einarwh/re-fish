@@ -1,17 +1,13 @@
 type point = {
-    x: float,
-    y: float
+  x: float,
+  y: float,
 };
 
-let create : (float, float) => point = 
-    (x, y) => { x: x, y: y };
+let create: (float, float) => point = (x, y) => {x, y};
 
-let displace : (point, Vector.vector) => point = 
-    (p, v) => { 
-        x: p.x +. Vector.dx(v), 
-        y: p.y +. Vector.dy(v)
-    };
+let displace: (point, Vector.vector) => point =
+  (p, v) => {x: p.x +. Vector.dx(v), y: p.y +. Vector.dy(v)};
 
-let x : point => float = p => p.x;
+let x: point => float = p => p.x;
 
-let y : point => float = p => p.y;
+let y: point => float = p => p.y;
